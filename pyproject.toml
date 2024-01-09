@@ -1,0 +1,42 @@
+[project]
+name = "parssie"
+version = "0.1.0"
+description = "Simple parsing example application"
+authors = [
+    { name = "kodx", email = "me@kodx.org" }
+]
+dependencies = [
+    "pyside6>=6.6.1",
+    "qtpy>=2.4.1",
+    "lxml>=5.1.0",
+    "selenium>=4.16.0",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[project.scripts]
+app = "parssie:run_app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/parssie"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/parssie", "src/ui"]
+
+[tool.pyright.defineConstant]
+PYQT5 = false
+PYSIDE2 = false
+PYQT6 = false
+PYSIDE6 = true
+
